@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from "react";
-// import from "@types/grecaptcha";
 
 const RECAPTCHA_SITE_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
