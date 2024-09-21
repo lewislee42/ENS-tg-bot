@@ -37,7 +37,7 @@ export default function MainContent() {
       )}
       {!isHumanVerified ? (
         <div className="space-y-4">
-          <p className="text-black">Please verify that you're human:</p>
+          <p className="text-black">Please verify that you&apos;re human:</p>
           <div className="flex justify-center">
             <ReCaptcha onVerify={handleReCaptchaVerify} />
           </div>
