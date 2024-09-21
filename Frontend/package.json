@@ -12,7 +12,8 @@
     "mongodb": "^6.9.0",
     "next": "14.2.13",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
     "@types/node": "20.16.5",
