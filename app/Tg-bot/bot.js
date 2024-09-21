@@ -1,6 +1,11 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+
 const { Telegraf, session } = require('telegraf');
 
-const bot = new Telegraf('7686574059:AAGWqHNcI-s_FrWdU2qZFy6-QYlCSR-Bv4s');
+const bot_token = process.env.BOT_TOKEN;
+
+const bot = new Telegraf(bot_token);
 console.log('bot is running...');
 
 bot.use(session());
