@@ -11,6 +11,7 @@
   "dependencies": {
     "@dynamic-labs/ethereum": "^3.1.1",
     "@dynamic-labs/sdk-react-core": "^3.1.1",
+    "dotenv": "^16.4.5",
     "next": "14.2.13",
     "pino-pretty": "^11.2.2",
     "react": "^18",
