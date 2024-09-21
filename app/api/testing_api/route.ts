@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import clientPromise from '@/lib/mongodb';
+import clientPromise from '/lib/mongodb';
 
-//export async function GET(req: NextRequest) {
-export async function GET() {
+
+export async function GET(req: NextRequest) {
 	try {
 		console.log("entered GET!!!")
 		const client = await clientPromise;
