@@ -5,6 +5,8 @@ import { ENS_BASE_REGISTRAR_ABI } from '@/app/constants';
 // import { toUtf8Bytes } from '@ethersproject/strings';
 // import ens registrar
 
+// param:
+// name : value
 export async function POST(req: NextRequest, res: NextResponse) {
 	const data = await req.json();
 	if (!data) {
