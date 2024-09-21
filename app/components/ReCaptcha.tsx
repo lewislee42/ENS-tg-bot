@@ -6,8 +6,8 @@ const RECAPTCHA_SITE_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
 declare global {
   interface Window {
-    grecaptcha: any;
-    onRecaptchaLoad: () => void;
+    grecaptcha: typeof grecaptcha;
+    onRecaptchaLoad?: () => void;
   }
 }
 

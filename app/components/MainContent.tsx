@@ -2,10 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-  useUserWallets,
-  useDynamicContext,
-} from "@dynamic-labs/sdk-react-core";
+import {  useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import ReCaptcha from "./ReCaptcha";
 import ListConnectedWallets from './ListConnectedWallets';
 
@@ -14,8 +11,6 @@ export default function MainContent() {
   const [telegramId, setTelegramId] = useState<string | null>(null);
   const [isHumanVerified, setIsHumanVerified] = useState(false);
   const { user, primaryWallet } = useDynamicContext();
-  console.log("User:", user); // Debugging log
-  console.log("Primary Wallet:", primaryWallet); // Debugging log
 
   useEffect(() => {
     const user_id = searchParams.get('user_id');
@@ -25,36 +20,37 @@ export default function MainContent() {
   }, [searchParams]);
 
   const handleReCaptchaVerify = useCallback((token: string) => {
-    // Mock verification process
     console.log("reCAPTCHA token:", token);
     setIsHumanVerified(true);
   }, []);
 
   if (!user) {
-    return <p className="text-black">Please log in to view your wallet information.</p>;
+    return <p className="text-black text-center">Please log in to view your wallet information.</p>;
   }
 
   return (
-    <div className="p-6 absolute left-1/2 transform -translate-x-1/2">
+    <div className="space-y-6 text-center">
       {telegramId && (
-        <p className="mt-4 text-center text-black">
+        <p className="text-black">
           Telegram ID: {telegramId}
         </p>
       )}
       {!isHumanVerified ? (
-        <div className="mt-4">
-          <p className="text-black">Please verify that you're human:</p>
-          <ReCaptcha onVerify={handleReCaptchaVerify} />
+        <div className="space-y-4">
+          <p className="text-black">Please verify that you&apos;re human:</p>
+          <div className="flex justify-center">
+            <ReCaptcha onVerify={handleReCaptchaVerify} />
+          </div>
         </div>
       ) : (
-        <>
+        <div className="space-y-4">
           <ListConnectedWallets />
           {primaryWallet && (
-            <div className="text-black">
+            <div className="text-black bg-green-100 p-2 rounded">
               Connected!
             </div>
           )}
-        </>
+        </div>
       )}
     </div>
   );
