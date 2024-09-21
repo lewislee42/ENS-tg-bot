@@ -6,18 +6,15 @@ const { Telegraf, session } = require('telegraf');
 const bot_token = process.env.BOT_TOKEN;
 
 const bot = new Telegraf(bot_token);
-console.log('bot is running...');
 
 bot.use(session());
 
 bot.start((ctx) => {
-  ctx.reply('Welcome to my bot!');
-  ctx.reply('Click the button to open the mini app:', {
+  ctx.reply('Welcome to ENS Manager');
+  ctx.reply('Login Page', {
     reply_markup: {
       inline_keyboard: [
-        [{ text: 'Open Mini App', web_app: { url: 'https://rnbkn-223-255-254-102.a.free.pinggy.link/'} }],
-        [{ text: 'call /test', callback_data: 'test'}],
-        [{ text: 'start form', callback_data: 'form'}]
+        [{ text: 'LOGIN', web_app: { url: 'https://rnbkn-223-255-254-102.a.free.pinggy.link/'} }],
       ]
     },
   });
