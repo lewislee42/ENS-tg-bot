@@ -1,13 +1,14 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from "react";
+// import from "@types/grecaptcha";
 
 const RECAPTCHA_SITE_KEY = '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI';
 
 declare global {
   interface Window {
-    grecaptcha: any;
-    onRecaptchaLoad: () => void;
+    grecaptcha: typeof grecaptcha;
+    onRecaptchaLoad?: () => void;
   }
 }
 

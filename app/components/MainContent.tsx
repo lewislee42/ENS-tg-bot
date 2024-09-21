@@ -3,8 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  useUserWallets,
-  useDynamicContext,
+  useDynamicContext
 } from "@dynamic-labs/sdk-react-core";
 import ReCaptcha from "./ReCaptcha";
 import ListConnectedWallets from './ListConnectedWallets';
@@ -43,7 +42,7 @@ export default function MainContent() {
       )}
       {!isHumanVerified ? (
         <div className="mt-4">
-          <p className="text-black">Please verify that you're human:</p>
+          <p className="text-black">Please verify that you&#39;re human:</p>
           <ReCaptcha onVerify={handleReCaptchaVerify} />
         </div>
       ) : (

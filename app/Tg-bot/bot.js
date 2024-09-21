@@ -1,7 +1,9 @@
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+import path from 'path';
+import { config } from 'dotenv';
+import { Telegraf, session } from 'telegraf';
 
-const { Telegraf, session } = require('telegraf');
+// Configure dotenv
+config({ path: path.resolve(__dirname, '../../.env') });
 
 const bot_token = process.env.BOT_TOKEN;
 
