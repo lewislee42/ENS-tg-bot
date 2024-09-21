@@ -2,10 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-  useUserWallets,
-  useDynamicContext,
-} from "@dynamic-labs/sdk-react-core";
+import {  useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import ReCaptcha from "./ReCaptcha";
 import ListConnectedWallets from './ListConnectedWallets';
 
