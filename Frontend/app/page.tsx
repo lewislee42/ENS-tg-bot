@@ -1,62 +1,24 @@
-'use client';
+// app/page.tsx
+import dynamic from 'next/dynamic'
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 
-import React, { useEffect, useState, useRef} from 'react';
+const MainContent = dynamic(() => import('./components/MainContent'), { ssr: false })
 
 export default function Home() {
-  const [message, setMessage] = useState<string | null>(null);
-  const effectRan = useRef(false);
-
-  useEffect(() => {
-	if (effectRan.current === false) { // to ensure UseEffect doesn't run twice during development
-		const fetchData = async () => {
-		try {
-			const response = await fetch('/api/testing_api', {
-				method:"GET"
-			});
-			console.log("heree the 1st");
-			const data = await response.json();
-
-			console.log("heree");
-
-			if (response.status == 200) {
-			setMessage(data.message);
-			} else {
-			setMessage("missing");
-			}
-			console.log("end")
-		} catch (error) {
-			console.error('Error fetching data:', error);
-		}
-		};
-
-		const uploadData = async (value : string) => {
-			try {
-			const response = await fetch('/api/testing_api', {
-				method:"POST",
-				body: JSON.stringify(value)
-			});
-			console.log("heree the 1st");
-			const data = await response.json();
-	
-			console.log("heree");
-	
-			if (response.status == 200) {
-				setMessage(data.message);
-			} else {
-				setMessage("missing");
-			}
-			console.log("end POST")
-			} catch (error) {
-			console.error('Error posting data:', error);
-			}
-		};
-
-		uploadData("Workinggg!!!!");
-		return () => {
-			effectRan.current = true;
-		};
-	}
-  }, []);
-
-  return <div>{message}</div>;
-};
+  return (
+    <div className="bg-white min-h-screen flex flex-col">
+      <header className="w-full p-4 bg-gray-100">
+        <div className="container mx-auto flex justify-end">
+          <div className="w-48 h-12 bg-white rounded shadow flex items-center justify-center">
+            <DynamicWidget />
+          </div>
+        </div>
+      </header>
+      <main className="flex-grow flex items-center justify-center">
+        <div className="container mx-auto">
+          <MainContent />
+        </div>
+      </main>
+    </div>
+  )
+}
